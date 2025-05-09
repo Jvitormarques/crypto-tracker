@@ -1,37 +1,71 @@
-🪙 Crypto Tracker
-Aplicação web para busca e monitoramento de criptomoedas em tempo real utilizando React, Vite, Context API e a API da CoinGecko.
+# 📈 Crypto Tracker
 
-🚀 Funcionalidades
-🔍 Busca de criptomoedas por nome ou símbolo.
+Projeto desenvolvido como parte da disciplina **Programação Web Fullstack**, com o objetivo de criar uma aplicação frontend em React.js que consome uma API pública e exibe dados em tempo real de criptomoedas.
 
-⭐ Adicionar moedas aos favoritos com notas personalizadas.
+---
 
-📊 Visualização de gráficos de preço.
+## 🚀 Visite o Projeto
 
-⚙️ Gerenciamento de estado com Context API e useReducer.
+👉 [Acesse o app online](https://jvitormarques.github.io/crypto-tracker/)
 
-🎨 Interface responsiva com Bootstrap.
+---
 
-🛠️ Tecnologias Utilizadas
-React
+## 📚 Descrição
 
-Vite
+Crypto Tracker é uma **Single Page Application (SPA)** que permite ao usuário:
 
-React Router DOM
+- Buscar por criptomoedas em tempo real.
+- Visualizar os dados principais de cada moeda.
+- Marcar moedas como favoritas com anotações.
+- Alternar entre páginas sem recarregamento.
 
-React Bootstrap
+---
 
-CoinGecko API
+## 🛠️ Tecnologias Utilizadas
 
-gh-pages
+- [React.js](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [React Router DOM](https://reactrouter.com/)
+- [CoinGecko API](https://www.coingecko.com/pt/api)
+- Context API com `useReducer`
+- Git + GitHub Pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📂 Estrutura do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+src/
+├── components/     # Componentes JSX reutilizáveis
+├── contexts/       # Contexto global (useReducer)
+├── pages/          # Páginas principais da aplicação
+└── App.jsx         # Roteamento principal
+```
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Como Executar Localmente
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/Jvitormarques/crypto-tracker.git
+cd crypto-tracker
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Execute o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+## 📧 Contato
+
+Projeto desenvolvido por **João Vitor Marques** para fins acadêmicos.  
+Dúvidas ou sugestões? Entre em contato pelo [GitHub](https://github.com/Jvitormarques).
