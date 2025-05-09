@@ -39,7 +39,6 @@ Crypto Tracker é uma **Single Page Application (SPA)** que permite ao usuário:
 src/
 ├── components/     # Componentes JSX reutilizáveis
 ├── contexts/       # Contexto global (useReducer)
-├── pages/          # Páginas principais da aplicação
 └── App.jsx         # Roteamento principal
 ```
 
