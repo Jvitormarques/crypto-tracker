@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { CryptoContext } from '../contexts/CryptoContext';
+import { useAuth } from '../contexts/AuthContext';
 import SearchForm from './SearchForm';
 import CryptoList from './CryptoList';
 import { Spinner, Alert } from 'react-bootstrap';
@@ -7,18 +8,39 @@ import { Spinner, Alert } from 'react-bootstrap';
 export default function SearchPage() {
   const { state, dispatch } = useContext(CryptoContext);
   const { symbol, loading, data, error } = state;
+  const { authenticatedFetch, isAuthenticated } = useAuth();
 
   useEffect(() => {
-    if (!symbol) return;
+    if (!symbol || !isAuthenticated) return;
+    
     dispatch({ type: 'FETCH_START' });
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${symbol}`)
+    
+    // Usar o backend em vez da API direta
+    authenticatedFetch(`/crypto/search?symbol=${symbol}&vs_currency=usd`)
       .then(res => {
         if (!res.ok) throw new Error('Erro na resposta da API');
         return res.json();
       })
-      .then(json => dispatch({ type: 'FETCH_SUCCESS', payload: json }))
+      .then(json => {
+        if (json.success) {
+          dispatch({ type: 'FETCH_SUCCESS', payload: json.data });
+        } else {
+          throw new Error(json.error || 'Erro na busca');
+        }
+      })
       .catch(err => dispatch({ type: 'FETCH_ERROR', payload: err.message }));
-  }, [symbol, dispatch]);
+  }, [symbol, dispatch, authenticatedFetch, isAuthenticated]);
+
+  if (!isAuthenticated) {
+    return (
+      <div className="text-center py-5">
+        <Alert variant="info">
+          <h4>Acesso Restrito</h4>
+          <p>Você precisa estar logado para buscar criptomoedas.</p>
+        </Alert>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -38,7 +60,7 @@ export default function SearchPage() {
 
       {data && data.length === 0 && !loading && (
         <Alert variant="warning" className="my-4">
-          Nenhuma criptomoeda encontrada para “{symbol}”.
+          Nenhuma criptomoeda encontrada para "{symbol}".
         </Alert>
       )}
     </div>
